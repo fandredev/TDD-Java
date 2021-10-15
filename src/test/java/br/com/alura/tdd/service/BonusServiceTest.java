@@ -29,7 +29,7 @@ class BonusServiceTest {
 	void bonusShouldTenPercentExact10k() {
 		BonusService service = new BonusService();
 		BigDecimal bonus = service.calcularBonus(new Funcionario("Felipe", LocalDate.now(), new BigDecimal(10000)));
-		assertEquals(new BigDecimal("1000"), bonus);
+		assertEquals(new BigDecimal("1000.00"), bonus);
 	}
 
 }
