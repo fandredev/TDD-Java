@@ -2,7 +2,7 @@ package br.com.alura.tdd.modelo;
 
 import java.math.BigDecimal;
 
-public enum Desempenho {	
+public enum Perfomance {	
 	A_DESEJAR {
 		@Override
 		public BigDecimal percentReadjustment() {

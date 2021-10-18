@@ -5,37 +5,43 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import br.com.alura.tdd.modelo.Desempenho;
+import br.com.alura.tdd.modelo.Perfomance;
 import br.com.alura.tdd.modelo.Employee;
-import br.com.alura.tdd.modelo.Funcionario;
 
 public class ReajusteServiceTest {
+	private ReajusteService service;
+	private Employee employee;
+	
+	@BeforeEach
+	public void initializeAttributes() {
+		service = new ReajusteService();
+		employee = new Employee("Kaique", LocalDate.now(), new BigDecimal("1000"));
+	}
+	
+	@AfterEach
+	public void finishSpecsTest() {
+		System.out.println("Finish Test!");
+	}
+	
 	@Test
 	public void readjustmentShouldThreePercentWhenPerfomanceBeDesired() {
-		ReajusteService service = new ReajusteService();
-		Employee employee = new Employee("Kaique", LocalDate.now(), new BigDecimal("1000"));
-		
-		service.grantReadjustment(employee, Desempenho.A_DESEJAR);
-		assertEquals(new BigDecimal("1030.00"), employee.getSalario());
+		service.grantReadjustment(employee, Perfomance.A_DESEJAR);
+		assertEquals(new BigDecimal("1030.00"), employee.getEmployeeSalary());
 	}
 	
 	@Test
 	public void readjustmentShouldFifteenPercentWhenPerfomanceBeDesired() {
-		ReajusteService service = new ReajusteService();
-		Employee employee = new Employee("João", LocalDate.now(), new BigDecimal("1000"));
-		
-		service.grantReadjustment(employee, Desempenho.BOM);
-		assertEquals(new BigDecimal("1150.00"), employee.getSalario());
+		service.grantReadjustment(employee, Perfomance.BOM);
+		assertEquals(new BigDecimal("1150.00"), employee.getEmployeeSalary());
 	}
 	
 	@Test
 	public void readjustmentShouldTwentyPercentWhenPerfomanceBeDesired() {
-		ReajusteService service = new ReajusteService();
-		Employee employee = new Employee("Cristian", LocalDate.now(), new BigDecimal("1000"));
-		
-		service.grantReadjustment(employee, Desempenho.OTIMO);
-		assertEquals(new BigDecimal("1200.00"), employee.getSalario());
+		service.grantReadjustment(employee, Perfomance.OTIMO);
+		assertEquals(new BigDecimal("1200.00"), employee.getEmployeeSalary());
 	}
 }

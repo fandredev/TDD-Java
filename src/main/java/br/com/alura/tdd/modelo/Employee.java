@@ -6,31 +6,35 @@ import java.time.LocalDate;
 
 public class Employee {
 
-	private String nome;
-	private LocalDate dataAdmissao;
-	private BigDecimal salario;
+	private String employeeName;
+	private LocalDate employeeDateEmission;
+	private BigDecimal employeeSalary;
 
-	public Employee(String nome, LocalDate dataAdmissao, BigDecimal salario) {
-		this.nome = nome;
-		this.dataAdmissao = dataAdmissao;
-		this.salario = salario;
+	public Employee(String employeeName, LocalDate employeeDateEmission, BigDecimal employeeSalary) {
+		this.employeeName = employeeName;
+		this.employeeDateEmission = employeeDateEmission;
+		this.employeeSalary = employeeSalary;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getEmployeeNome() {
+		return employeeName;
 	}
 
-	public LocalDate getDataAdmissao() {
-		return dataAdmissao;
+	public LocalDate getEmployeeDateEmission() {
+		return employeeDateEmission;
 	}
 
-	public BigDecimal getSalario() {
-		return salario;
+	public BigDecimal getEmployeeSalary() {
+		return employeeSalary;
 	}
 
-	public void reajustarSalario(BigDecimal reajuste) {
-		// TODO Auto-generated method stub
-		this.salario = this.salario.add(reajuste).setScale(2, RoundingMode.HALF_UP);
+	public void readjustmentSalaryEmployee(BigDecimal readjustment) {
+		this.employeeSalary = this.getEmployeeSalary().add(readjustment);
+		this.roundedSalary();
+	}
+	
+	private void roundedSalary() {
+		this.employeeSalary = this.employeeSalary.setScale(2, RoundingMode.HALF_UP);
 	}
 
 }

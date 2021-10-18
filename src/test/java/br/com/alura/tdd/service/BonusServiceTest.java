@@ -13,9 +13,9 @@ class BonusServiceTest {
 
 	@Test
 	void bonusShouldBeZeroForHighPaidEmployee() {
-		BonusService service = new BonusService();
+		BonusService serviceBonusEmployee = new BonusService();
 		 assertThrows(IllegalArgumentException.class,
-			() -> service.calcularBonus(new Employee("Felipe", LocalDate.now(), new BigDecimal(25000))
+			() -> serviceBonusEmployee.calculateBonusEmployee(new Employee("Felipe", LocalDate.now(), new BigDecimal(25000))
 		 ));
 //		try {
 //			service.calcularBonus(new Employee("Felipe", LocalDate.now(), new BigDecimal(25000)));	
@@ -27,16 +27,16 @@ class BonusServiceTest {
 	
 	@Test
 	void bonusShouldBeTenPercentSalary() {
-		BonusService service = new BonusService();
-		BigDecimal bonus = service.calcularBonus(new Employee("Felipe", LocalDate.now(), new BigDecimal(2500)));
-		assertEquals(new BigDecimal("250.00"), bonus);
+		BonusService serviceBonusEmployee = new BonusService();
+		BigDecimal calculatedBonusEmployee = serviceBonusEmployee.calculateBonusEmployee(new Employee("Felipe", LocalDate.now(), new BigDecimal(2500)));
+		assertEquals(new BigDecimal("250.00"), calculatedBonusEmployee);
 	}
 	
 	@Test
 	void bonusShouldTenPercentExact10k() {
-		BonusService service = new BonusService();
-		BigDecimal bonus = service.calcularBonus(new Employee("Felipe", LocalDate.now(), new BigDecimal(10000)));
-		assertEquals(new BigDecimal("1000.00"), bonus);
+		BonusService serviceBonusEmployee = new BonusService();
+		BigDecimal calculatedBonusEmployee = serviceBonusEmployee.calculateBonusEmployee(new Employee("Felipe", LocalDate.now(), new BigDecimal(10000)));
+		assertEquals(new BigDecimal("1000.00"), calculatedBonusEmployee);
 	}
 
 }
